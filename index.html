@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PropFlow Realty - AI-powered property matching and real estate enquiries.">
+<title>PropFlow Realty | Find Your Perfect Property</title>
+<style>
+:root{--navy:#061a36;--navy2:#0b2548;--gold:#d8aa45;--cream:#f8f7f3;--text:#12203a;--muted:#667085;--line:#e6e7ea}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--cream)}
+nav{height:82px;background:#06172f;color:#fff;display:flex;align-items:center;padding:0 5.8%;justify-content:space-between;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0002}
+.logo{display:flex;align-items:center;gap:10px;font-family:Georgia,serif;font-size:27px;font-weight:700}.logo-mark{color:var(--gold);font-size:35px;line-height:1}.logo span{display:block;color:#fff}.logo small{display:block;font:700 9px Arial;letter-spacing:4px;color:var(--gold);margin-top:-3px}
+.navlinks{display:flex;gap:31px}.navlinks a{color:#fff;text-decoration:none;font-size:14px}.navlinks a:hover{color:var(--gold)}.call{background:var(--gold);color:#081a34!important;padding:13px 20px;border-radius:6px;font-weight:700}
+.hero{min-height:510px;color:white;background:linear-gradient(90deg,#03162eeF 0%,#061a36D9 42%,#061a3660 72%,#061a3620),url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=90") center/cover;display:flex;align-items:center}
+.hero-inner{width:90%;max-width:1180px;margin:auto;padding:70px 0}.eyebrow{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:2px;margin-bottom:13px}.hero h1{font:700 clamp(43px,5.3vw,66px)/1.02 Georgia,serif;max-width:610px;margin:0 0 18px}.hero p{font-size:16px;line-height:1.65;max-width:590px;color:#f0f3f7}.hero-btn{display:inline-block;background:var(--gold);color:#061a36;padding:14px 22px;border-radius:6px;text-decoration:none;font-weight:700;margin-top:10px}
+.features{display:flex;gap:45px;margin-top:35px}.feature{display:flex;gap:10px;align-items:center}.feature-icon{width:38px;height:38px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold)}.feature strong{display:block;font-size:13px}.feature span{font-size:11px;color:#d6dce5}
+.section{padding:70px 5.8%}.heading{text-align:center;max-width:700px;margin:0 auto 35px}.heading h2{font:700 40px Georgia,serif;margin:8px 0 10px}.heading p{color:var(--muted);margin:0;line-height:1.6}
+.filters{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-bottom:28px}.filter{border:1px solid #ddd;background:#fff;color:#344054;border-radius:25px;padding:10px 17px;cursor:pointer;font-weight:700}.filter.active,.filter:hover{background:var(--navy);color:#fff}
+.listings{max-width:1180px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px #061a3610;border:1px solid #eee;transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-4px);box-shadow:0 14px 32px #061a3620}.photo{height:220px;background-size:cover;background-position:center;position:relative}.badge{position:absolute;top:14px;left:14px;background:var(--gold);color:var(--navy);font-size:11px;font-weight:800;padding:7px 10px;border-radius:4px}.price{position:absolute;left:14px;bottom:14px;background:#061a36ed;color:#fff;padding:8px 11px;border-radius:4px;font-weight:800;font-size:14px}.info{padding:19px}.info h3{font:700 21px Georgia,serif;margin:0 0 5px}.location{color:var(--muted);font-size:13px;margin-bottom:14px}.details{display:flex;gap:14px;color:#475467;border-top:1px solid var(--line);padding-top:13px;font-size:12px}.enquire{display:block;text-align:center;text-decoration:none;background:var(--navy);color:#fff;padding:11px;border-radius:6px;margin-top:17px;font-weight:700;font-size:13px}.enquire:hover{background:var(--navy2)}
+.split{background:#fff;display:grid;grid-template-columns:1fr 1.15fr;gap:55px;align-items:center}.benefits h2{font:700 39px Georgia,serif;margin:8px 0 15px}.benefits>p{color:var(--muted);line-height:1.6}.benefit{display:flex;gap:13px;margin-top:21px}.bicon{width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;flex:none}.benefit strong{display:block;font-size:14px}.benefit span{font-size:12px;color:var(--muted)}
+.form{background:#fff;border-radius:14px;padding:30px;box-shadow:0 10px 35px #061a3614;border:1px solid #eee}.form-title{display:flex;gap:12px;align-items:center;margin-bottom:20px}.house{width:45px;height:45px;border-radius:50%;background:#fff8e8;color:var(--gold);display:grid;place-items:center;font-size:23px}.form h2{font:700 28px Georgia,serif;margin:0}.form-title p{margin:3px 0 0;color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{font-size:12px;font-weight:700}input,select,textarea{width:100%;margin-top:6px;padding:12px;border:1px solid #d8dce3;border-radius:6px;background:#fff;font:inherit;font-size:13px;color:#172033}textarea{min-height:80px;resize:vertical}.full{grid-column:1/-1}.submit{width:100%;border:0;background:var(--navy);color:var(--gold);padding:14px;border-radius:6px;font-size:15px;font-weight:800;cursor:pointer}.status{display:none;margin-top:10px;padding:10px;border-radius:6px;background:#edf7ef;color:#21652e;font-size:12px}
+footer{background:#04162d;color:#fff;padding:46px 5.8% 22px}.footer-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:35px}.footer-grid p,.footer-grid li{color:#aeb9c8;font-size:12px;line-height:1.7}.footer-grid ul{list-style:none;padding:0;margin:0}.footer-grid h4{color:var(--gold);margin:4px 0 12px;font-size:13px}.copyright{max-width:1180px;margin:30px auto 0;padding-top:18px;border-top:1px solid #18304e;text-align:center;color:#78879a;font-size:11px}
+@media(max-width:900px){.listings{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}}
+@media(max-width:600px){nav{padding:0 4%}.call{display:none}.hero{min-height:650px}.features{flex-wrap:wrap;gap:20px}.listings,.grid,.footer-grid{grid-template-columns:1fr}.section{padding:55px 5%}.hero h1{font-size:43px}.split{gap:30px}}
+</style>
+</head>
+<body>
+<nav>
+<a class="logo" href="#"><span class="logo-mark">⌂</span><span>PropFlow<small>REALTY</small></span></a>
+<div class="navlinks"><a href="#">Home</a><a href="#properties">Buy</a><a href="#properties">Rent</a><a href="#properties">Sell</a><a href="#about">About Us</a><a href="#enquiry">Contact</a></div>
+<a class="call" href="#enquiry">☎ &nbsp; Book a Call</a>
+</nav>
+
+<header class="hero"><div class="hero-inner">
+<div class="eyebrow">AI-POWERED PROPERTY MATCHING</div>
+<h1>Find the Right Property Without the Hassle.</h1>
+<p>Tell us what you're looking for and our AI assistant will qualify your needs and connect you with the best properties that fit your requirements, budget and lifestyle.</p>
+<a class="hero-btn" href="#properties">Explore Properties →</a>
+<div class="features"><div class="feature"><div class="feature-icon">♙</div><div><strong>AI Qualified Leads</strong><span>We understand your needs</span></div></div><div class="feature"><div class="feature-icon">⌂</div><div><strong>Best Property Match</strong><span>Accurate & personalized</span></div></div><div class="feature"><div class="feature-icon">◉</div><div><strong>Save Time</strong><span>Quick & hassle-free</span></div></div></div>
+</div></header>
+
+<section class="section" id="properties">
+<div class="heading"><div class="eyebrow">FEATURED PROPERTIES</div><h2>Explore Our Latest Listings</h2><p>Browse premium homes and apartments, then enquire about any property that catches your eye.</p></div>
+<div class="filters"><button class="filter active" data-filter="all">All Properties</button><button class="filter" data-filter="sale">For Sale</button><button class="filter" data-filter="rent">For Rent</button><button class="filter" data-filter="house">Houses</button><button class="filter" data-filter="apartment">Apartments</button></div>
+<div class="listings">
+<article class="card" data-type="sale house"><div class="photo" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=90')"><span class="badge">FOR SALE</span><span class="price">$485,000</span></div><div class="info"><h3>Modern Luxury Residence</h3><div class="location">Miami, Florida</div><div class="details"><span>4 Beds</span><span>3 Baths</span><span>2,480 ft²</span></div><a class="enquire" href="#enquiry">View / Enquire →</a></div></article>
+<article class="card" data-type="sale house"><div class="photo" style="background-image:url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1000&q=90')"><span class="badge">FOR SALE</span><span class="price">$625,000</span></div><div class="info"><h3>Contemporary Family Home</h3><div class="location">Austin, Texas</div><div class="details"><span>4 Beds</span><span>3 Baths</span><span>2,760 ft²</span></div><a class="enquire" href="#enquiry">View / Enquire →</a></div></article>
+<article class="card" data-type="rent apartment"><div class="photo" style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=90')"><span class="badge">FOR RENT</span><span class="price">$3,200/mo</span></div><div class="info"><h3>Luxury Downtown Apartment</h3><div class="location">New York, NY</div><div class="details"><span>3 Beds</span><span>2 Baths</span><span>1,650 ft²</span></div><a class="enquire" href="#enquiry">View / Enquire →</a></div></article>
+<article class="card" data-type="rent house"><div class="photo" style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=90')"><span class="badge">FOR RENT</span><span class="price">$4,100/mo</span></div><div class="info"><h3>Private Pool Villa</h3><div class="location">Los Angeles, CA</div><div class="details"><span>4 Beds</span><span>3 Baths</span><span>2,900 ft²</span></div><a class="enquire" href="#enquiry">View / Enquire →</a></div></article>
+<article class="card" data-type="sale apartment"><div class="photo" style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=90')"><span class="badge">FOR SALE</span><span class="price">$720,000</span></div><div class="info"><h3>Modern City Apartment</h3><div class="location">Dallas, Texas</div><div class="details"><span>3 Beds</span><span>2 Baths</span><span>1,540 ft²</span></div><a class="enquire" href="#enquiry">View / Enquire →</a></div></article>
+<article class="card" data-type="sale house"><div class="photo" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=90')"><span class="badge">FOR SALE</span><span class="price">$895,000</span></div><div class="info"><h3>Clifftop Family Estate</h3><div class="location">San Diego, CA</div><div class="details"><span>5 Beds</span><span>4 Baths</span><span>3,600 ft²</span></div><a class="enquire" href="#enquiry">View / Enquire →</a></div></article>
+</div>
+</section>
+
+<section class="section split" id="about">
+<div class="benefits"><div class="eyebrow">GET STARTED</div><h2>Tell Us About Your Property Needs</h2><p>Fill in the form and our AI assistant will qualify your requirements, then connect you with the best options for your needs.</p>
+<div class="benefit"><div class="bicon">⚡</div><div><strong>Smart AI Qualification</strong><span>We ask the right questions to understand your needs better.</span></div></div>
+<div class="benefit"><div class="bicon">▢</div><div><strong>Personalized Recommendations</strong><span>Get property suggestions that match your lifestyle and budget.</span></div></div>
+<div class="benefit"><div class="bicon">➤</div><div><strong>Connect With Your Agent</strong><span>Your enquiry is routed to the right real-estate team for follow-up.</span></div></div>
+</div>
+<div class="form" id="enquiry"><div class="form-title"><div class="house">⌂</div><div><h2>Property Enquiry Form</h2><p>Let's find your perfect property</p></div></div>
+<form id="leadForm"><div class="grid">
+<div><label>Full Name *</label><input name="name" placeholder="e.g. John Smith" required></div>
+<div><label>Email Address *</label><input name="email" type="email" placeholder="e.g. john@example.com" required></div>
+<div><label>What are you looking for? *</label><select name="property_type" required><option value="">Select property type</option><option>2 Bedroom House</option><option>3 Bedroom House</option><option>4 Bedroom House</option><option>5+ Bedroom House</option><option>Apartment</option><option>Land</option></select></div>
+<div><label>Budget Range *</label><select name="budget" required><option value="">Select your budget range</option><option>$50,000 - $100,000</option><option>$100,000 - $250,000</option><option>$250,000 - $500,000</option><option>$500,000 - $1M</option><option>$1M+</option></select></div>
+<div><label>Preferred Location *</label><input name="location" placeholder="e.g. Miami, Florida" required></div>
+<div><label>When are you looking to buy? *</label><select name="timeline" required><option value="">Select timeline</option><option>Immediately</option><option>Within 3 months</option><option>3-6 months</option><option>6-12 months</option><option>Just browsing</option></select></div>
+<div class="full"><label>Additional Details</label><textarea name="message" placeholder="Tell us anything else about your requirements..."></textarea></div>
+<div class="full"><button class="submit" type="submit">Find My Property &nbsp; →</button></div></div><div class="status" id="status"></div></form></div>
+</section>
+
+<footer><div class="footer-grid"><div><div class="logo"><span class="logo-mark">⌂</span><span>PropFlow<small>REALTY</small></span></div><p>AI-powered real estate solutions that connect you to the right properties faster, smarter, and easier.</p></div><div><h4>Quick Links</h4><ul><li>Home</li><li>Buy Properties</li><li>Rent Properties</li><li>Sell With Us</li><li>About Us</li><li>Contact Us</li></ul></div><div><h4>Popular Locations</h4><ul><li>Miami, FL</li><li>Los Angeles, CA</li><li>Austin, TX</li><li>Dallas, TX</li><li>New York, NY</li></ul></div><div><h4>Contact Us</h4><p>☎ +1 (555) 123-4567</p><p>✉ hello@propflowrealty.com</p><p>⌖ 123 Realty Way,<br>Miami, FL 33101, USA</p></div></div><div class="copyright">© 2026 PropFlow Realty. All rights reserved.</div></footer>
+
+<script>
+const WEBHOOK_URL="PASTE_YOUR_N8N_WEBHOOK_URL_HERE";
+document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");const f=btn.dataset.filter;document.querySelectorAll(".card").forEach(c=>c.style.display=f==="all"||c.dataset.type.includes(f)?"":"none")}));
+document.getElementById("leadForm").addEventListener("submit",async e=>{e.preventDefault();const s=document.getElementById("status");s.style.display="block";if(WEBHOOK_URL.includes("PASTE_YOUR")){s.textContent="The website is ready. We'll connect your n8n webhook next.";return}try{const r=await fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});if(!r.ok)throw Error();s.textContent="Thank you! Your enquiry has been received.";e.target.reset()}catch(err){s.textContent="We couldn't send the enquiry. Please try again."}});
+</script>
+</body>
+</html>
