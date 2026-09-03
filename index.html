@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PropFlow Realty Inc — Premium Properties</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #162436;
+    --gold: #C9A84C;
+    --gold-light: #E2C97E;
+    --off-white: #F8F5F0;
+    --slate: #4A5568;
+    --slate-light: #718096;
+    --white: #ffffff;
+    --border: #E2DDD6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--navy);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 72px;
+    background: rgba(13, 27, 42, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--navy);
+  }
+
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.01em;
+  }
+
+  .nav-logo-text span {
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 10px 22px;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.04em !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 680px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 100px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=85&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center 30%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(13,27,42,0.88) 0%,
+      rgba(13,27,42,0.55) 55%,
+      rgba(13,27,42,0.1) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 60px;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-eyebrow-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 44px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 16px 36px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--navy);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* ── SECTION SCAFFOLDING ── */
+  section {
+    padding: 100px 60px;
+  }
+
+  .section-header {
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .section-tag-line {
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-tag-text {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+    max-width: 560px;
+  }
+
+  .section-header p {
+    margin-top: 16px;
+    font-size: 16px;
+    color: var(--slate);
+    max-width: 480px;
+    line-height: 1.75;
+  }
+
+  /* ── SEARCH BAR ── */
+  .search-section {
+    background: var(--white);
+    padding: 48px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .search-bar {
+    display: flex;
+    gap: 0;
+    max-width: 900px;
+    border: 1.5px solid var(--border);
+    background: var(--off-white);
+  }
+
+  .search-field {
+    flex: 1;
+    padding: 18px 24px;
+    border: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    outline: none;
+    border-right: 1px solid var(--border);
+  }
+
+  .search-field::placeholder { color: var(--slate-light); }
+
+  .search-select {
+    padding: 18px 20px;
+    border: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    outline: none;
+    border-right: 1px solid var(--border);
+    cursor: pointer;
+    min-width: 140px;
+  }
+
+  .search-btn {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 18px 36px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+
+  .search-btn:hover { background: var(--gold-light); }
+
+  /* ── FEATURED LISTINGS ── */
+  .listings-section {
+    background: var(--off-white);
+  }
+
+  .listings-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  .view-all {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    margin-bottom: 4px;
+  }
+
+  .listings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .listing-card {
+    background: var(--white);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s;
+  }
+
+  .listing-card:hover { transform: translateY(-4px); }
+
+  .listing-card.featured {
+    grid-column: span 2;
+  }
+
+  .listing-img-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .listing-card:not(.featured) .listing-img-wrap {
+    height: 220px;
+  }
+
+  .listing-card.featured .listing-img-wrap {
+    height: 320px;
+  }
+
+  .listing-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+
+  .listing-card:hover .listing-img-wrap img {
+    transform: scale(1.04);
+  }
+
+  .listing-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 5px 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .listing-badge.new {
+    background: var(--navy);
+    color: var(--gold);
+  }
+
+  .listing-body {
+    padding: 24px 28px 28px;
+  }
+
+  .listing-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .listing-card.featured .listing-price {
+    font-size: 30px;
+  }
+
+  .listing-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--slate);
+    margin-bottom: 16px;
+  }
+
+  .listing-location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--slate-light);
+    margin-bottom: 20px;
+  }
+
+  .listing-location svg {
+    flex-shrink: 0;
+  }
+
+  .listing-meta {
+    display: flex;
+    gap: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  .listing-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--slate);
+  }
+
+  .listing-meta-item strong {
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  /* ── WHY PROPFLOW ── */
+  .why-section {
+    background: var(--navy);
+  }
+
+  .why-section .section-header h2 {
+    color: var(--white);
+  }
+
+  .why-section .section-header p {
+    color: rgba(255,255,255,0.55);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .why-card {
+    background: var(--navy-mid);
+    padding: 44px 40px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .why-card:hover {
+    border-top-color: var(--gold);
+  }
+
+  .why-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 24px;
+    color: var(--gold);
+  }
+
+  .why-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .why-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+  }
+
+  /* ── AGENTS ── */
+  .agents-section {
+    background: var(--white);
+  }
+
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  .agent-card {
+    text-align: center;
+  }
+
+  .agent-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    margin-bottom: 20px;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.3s;
+  }
+
+  .agent-card:hover .agent-img { filter: grayscale(0%); }
+
+  .agent-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .agent-role {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .agent-info {
+    font-size: 13px;
+    color: var(--slate-light);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section {
+    background: var(--off-white);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    padding: 36px 32px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .testimonial-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 20px;
+  }
+
+  .star { color: var(--gold); font-size: 14px; }
+
+  .testimonial-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--navy);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .testimonial-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .testimonial-location {
+    font-size: 12px;
+    color: var(--slate-light);
+    margin-top: 2px;
+  }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--gold);
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--navy);
+    max-width: 560px;
+    line-height: 1.2;
+  }
+
+  .btn-dark {
+    background: var(--navy);
+    color: var(--white);
+    padding: 18px 40px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-dark:hover { background: var(--navy-mid); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 72px 60px 40px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.75;
+    margin-top: 16px;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-col ul a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: var(--white); }
+
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── CHAT WIDGET ── */
+  .chat-launcher {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .chat-bubble-hint {
+    background: var(--white);
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    border-radius: 2px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  /* Channel picker panel */
+  .channel-picker {
+    background: var(--white);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    border-radius: 2px;
+    overflow: hidden;
+    width: 260px;
+    display: none;
+    flex-direction: column;
+  }
+
+  .channel-picker.open { display: flex; }
+
+  .channel-picker-header {
+    background: var(--navy);
+    padding: 14px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .channel-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.15s;
+    background: var(--white);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    width: 100%;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .channel-option:last-child { border-bottom: none; }
+  .channel-option:hover { background: var(--off-white); }
+
+  .channel-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .channel-icon.web { background: var(--gold); }
+  .channel-icon.tg  { background: #229ED9; }
+  .channel-icon.wa  { background: #25D366; }
+
+  .channel-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .channel-label { flex: 1; }
+
+  .channel-label-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .channel-label-sub {
+    font-size: 11px;
+    color: var(--slate-light);
+    margin-top: 2px;
+  }
+
+  .channel-arrow {
+    color: var(--slate-light);
+    font-size: 16px;
+  }
+
+  .channel-badge {
+    font-size: 9px;
+    font-weight: 700;
+    background: #E5F6FF;
+    color: #0077B5;
+    padding: 2px 7px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+  }
+
+  .channel-badge.soon {
+    background: #FFF3E0;
+    color: #E65100;
+  }
+
+  .chat-btn {
+    width: 60px;
+    height: 60px;
+    background: var(--gold);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.45);
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .chat-btn:hover {
+    transform: scale(1.06);
+    background: var(--gold-light);
+  }
+
+  .chat-btn svg {
+    width: 26px;
+    height: 26px;
+    color: var(--navy);
+    transition: transform 0.2s;
+  }
+
+  .chat-btn.active svg {
+    transform: rotate(90deg);
+  }
+
+  /* Chat Window */
+  .chat-window {
+    position: fixed;
+    bottom: 108px;
+    right: 32px;
+    z-index: 200;
+    width: 360px;
+    background: var(--white);
+    box-shadow: 0 16px 64px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .chat-window.open { display: flex; }
+
+  .chat-header {
+    background: var(--navy);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--navy);
+    flex-shrink: 0;
+  }
+
+  .chat-header-info { flex: 1; }
+
+  .chat-header-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .chat-header-status {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    background: #4CAF50;
+    border-radius: 50%;
+  }
+
+  .chat-close {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s;
+  }
+
+  .chat-close:hover { color: var(--white); }
+
+  .chat-messages {
+    flex: 1;
+    min-height: 280px;
+    max-height: 340px;
+    overflow-y: auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--off-white);
+  }
+
+  .msg {
+    max-width: 82%;
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding: 10px 14px;
+    border-radius: 2px;
+  }
+
+  .msg.agent {
+    background: var(--white);
+    color: var(--navy);
+    align-self: flex-start;
+    border-left: 2px solid var(--gold);
+  }
+
+  .msg.user {
+    background: var(--navy);
+    color: var(--white);
+    align-self: flex-end;
+  }
+
+  .msg-typing {
+    background: var(--white);
+    padding: 12px 16px;
+    align-self: flex-start;
+    border-left: 2px solid var(--gold);
+    display: none;
+  }
+
+  .msg-typing.visible { display: block; }
+
+  .typing-dots {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    height: 14px;
+  }
+
+  .typing-dots span {
+    width: 5px;
+    height: 5px;
+    background: var(--slate-light);
+    border-radius: 50%;
+    animation: bounce 1.2s infinite ease-in-out;
+  }
+
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+  }
+
+  .chat-input-area {
+    display: flex;
+    border-top: 1px solid var(--border);
+    background: var(--white);
+  }
+
+  .chat-input {
+    flex: 1;
+    border: none;
+    padding: 16px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--navy);
+    outline: none;
+    background: transparent;
+  }
+
+  .chat-input::placeholder { color: var(--slate-light); }
+
+  .chat-send {
+    background: var(--gold);
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    color: var(--navy);
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chat-send:hover { background: var(--gold-light); }
+
+  .chat-send svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Scrollbar */
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">P</div>
+    <div class="nav-logo-text">PropFlow <span>Realty</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#listings">Properties</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#agents">Our Team</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Viewing</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <div class="hero-eyebrow-text">Trusted since 2009</div>
+    </div>
+    <h1>Where <em>exceptional</em> homes find the right people</h1>
+    <p class="hero-sub">PropFlow Realty connects discerning buyers and sellers with premium properties across the UK and US. Expert guidance, every step of the way.</p>
+    <div class="hero-actions">
+      <a href="#listings" class="btn-primary">Explore Properties</a>
+      <a href="#agents" class="btn-ghost">Meet our agents</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">2,400+</div>
+    <div class="stat-label">Properties Sold</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-number">£1.8B</div>
+    <div class="stat-label">Total Sales Volume</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-number">97%</div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-number">14</div>
+    <div class="stat-label">Years in Market</div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-bar">
+    <input class="search-field" type="text" placeholder="City, postcode, or neighbourhood…"/>
+    <select class="search-select">
+      <option>All Types</option>
+      <option>Apartment</option>
+      <option>Detached House</option>
+      <option>Semi-Detached</option>
+      <option>Penthouse</option>
+      <option>Villa</option>
+    </select>
+    <select class="search-select">
+      <option>Any Price</option>
+      <option>Under £250K</option>
+      <option>£250K – £500K</option>
+      <option>£500K – £1M</option>
+      <option>£1M+</option>
+    </select>
+    <button class="search-btn">Search</button>
+  </div>
+</div>
+
+<!-- LISTINGS -->
+<section class="listings-section" id="listings">
+  <div class="listings-header">
+    <div class="section-header" style="margin-bottom:0">
+      <div class="section-tag">
+        <div class="section-tag-line"></div>
+        <div class="section-tag-text">Available Now</div>
+      </div>
+      <h2>Featured Properties</h2>
+    </div>
+    <a href="#" class="view-all">View all listings →</a>
+  </div>
+
+  <div class="listings-grid">
+
+    <!-- Card 1 — Featured -->
+    <div class="listing-card featured">
+      <div class="listing-img-wrap">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=900&q=80&auto=format&fit=crop" alt="Luxury Kensington Villa"/>
+        <span class="listing-badge">Featured</span>
+      </div>
+      <div class="listing-body">
+        <div class="listing-price">£2,850,000</div>
+        <div class="listing-name">Grand Victorian Villa — Kensington, London</div>
+        <div class="listing-location">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Kensington, London W8
+        </div>
+        <div class="listing-meta">
+          <div class="listing-meta-item"><strong>5</strong> Beds</div>
+          <div class="listing-meta-item"><strong>4</strong> Baths</div>
+          <div class="listing-meta-item"><strong>4,200</strong> sq ft</div>
+          <div class="listing-meta-item"><strong>Private</strong> Garden</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="listing-card">
+      <div class="listing-img-wrap">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80&auto=format&fit=crop" alt="Manchester Apartment"/>
+        <span class="listing-badge new">New</span>
+      </div>
+      <div class="listing-body">
+        <div class="listing-price">£385,000</div>
+        <div class="listing-name">City Centre Apartment — Manchester</div>
+        <div class="listing-location">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Deansgate, Manchester M3
+        </div>
+        <div class="listing-meta">
+          <div class="listing-meta-item"><strong>2</strong> Beds</div>
+          <div class="listing-meta-item"><strong>2</strong> Baths</div>
+          <div class="listing-meta-item"><strong>980</strong> sq ft</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="listing-card">
+      <div class="listing-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80&auto=format&fit=crop" alt="Birmingham Family Home"/>
+      </div>
+      <div class="listing-body">
+        <div class="listing-price">£545,000</div>
+        <div class="listing-name">Detached Family Home — Birmingham</div>
+        <div class="listing-location">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Edgbaston, Birmingham B15
+        </div>
+        <div class="listing-meta">
+          <div class="listing-meta-item"><strong>4</strong> Beds</div>
+          <div class="listing-meta-item"><strong>3</strong> Baths</div>
+          <div class="listing-meta-item"><strong>2,100</strong> sq ft</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="listing-card">
+      <div class="listing-img-wrap">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80&auto=format&fit=crop" alt="Edinburgh New Build"/>
+        <span class="listing-badge new">New</span>
+      </div>
+      <div class="listing-body">
+        <div class="listing-price">£720,000</div>
+        <div class="listing-name">Contemporary New Build — Edinburgh</div>
+        <div class="listing-location">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Morningside, Edinburgh EH10
+        </div>
+        <div class="listing-meta">
+          <div class="listing-meta-item"><strong>4</strong> Beds</div>
+          <div class="listing-meta-item"><strong>3</strong> Baths</div>
+          <div class="listing-meta-item"><strong>2,400</strong> sq ft</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="listing-card">
+      <div class="listing-img-wrap">
+        <img src="https://images.unsplash.com/photo-1502005097973-6a7082348e28?w=600&q=80&auto=format&fit=crop" alt="Bristol Townhouse"/>
+      </div>
+      <div class="listing-body">
+        <div class="listing-price">£465,000</div>
+        <div class="listing-name">Georgian Townhouse — Bristol</div>
+        <div class="listing-location">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Clifton, Bristol BS8
+        </div>
+        <div class="listing-meta">
+          <div class="listing-meta-item"><strong>3</strong> Beds</div>
+          <div class="listing-meta-item"><strong>2</strong> Baths</div>
+          <div class="listing-meta-item"><strong>1,650</strong> sq ft</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="listing-card">
+      <div class="listing-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80&auto=format&fit=crop" alt="Leeds Penthouse"/>
+        <span class="listing-badge">Premium</span>
+      </div>
+      <div class="listing-body">
+        <div class="listing-price">£995,000</div>
+        <div class="listing-name">Riverside Penthouse — Leeds</div>
+        <div class="listing-location">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Granary Wharf, Leeds LS1
+        </div>
+        <div class="listing-meta">
+          <div class="listing-meta-item"><strong>3</strong> Beds</div>
+          <div class="listing-meta-item"><strong>3</strong> Baths</div>
+          <div class="listing-meta-item"><strong>1,900</strong> sq ft</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY PROPFLOW -->
+<section class="why-section" id="why">
+  <div class="section-header">
+    <div class="section-tag">
+      <div class="section-tag-line"></div>
+      <div class="section-tag-text" style="color:var(--gold)">Our difference</div>
+    </div>
+    <h2>Why buyers and sellers choose PropFlow</h2>
+    <p>We combine deep market knowledge with technology that works — so you spend less time searching and more time deciding.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <svg class="why-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <h3>Verified Listings Only</h3>
+      <p>Every property is verified by our team before it goes live. No phantom listings, no outdated prices — just accurate, current inventory.</p>
+    </div>
+    <div class="why-card">
+      <svg class="why-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+      <h3>Dedicated Agent Support</h3>
+      <p>Your assigned agent stays with you from first viewing to completion. One point of contact, full accountability, no handoffs.</p>
+    </div>
+    <div class="why-card">
+      <svg class="why-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6.75v6.75"/></svg>
+      <h3>Market-Leading Analytics</h3>
+      <p>We track price movements, comparable sales, and neighbourhood trends so every offer you make is grounded in real data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section class="agents-section" id="agents">
+  <div class="section-header">
+    <div class="section-tag">
+      <div class="section-tag-line"></div>
+      <div class="section-tag-text">The team</div>
+    </div>
+    <h2>Agents who know the market</h2>
+    <p>Our agents average 11 years of experience and collectively hold over £900M in closed deals.</p>
+  </div>
+  <div class="agents-grid">
+    <div class="agent-card">
+      <img class="agent-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop&crop=top" alt="James Whitmore"/>
+      <div class="agent-name">James Whitmore</div>
+      <div class="agent-role">Senior Partner</div>
+      <div class="agent-info">London & South East · 18 yrs</div>
+    </div>
+    <div class="agent-card">
+      <img class="agent-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&auto=format&fit=crop&crop=top" alt="Priya Sharma"/>
+      <div class="agent-name">Priya Sharma</div>
+      <div class="agent-role">Lead Negotiator</div>
+      <div class="agent-info">Manchester & North · 12 yrs</div>
+    </div>
+    <div class="agent-card">
+      <img class="agent-img" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80&auto=format&fit=crop&crop=top" alt="Daniel Osei"/>
+      <div class="agent-name">Daniel Osei</div>
+      <div class="agent-role">Residential Specialist</div>
+      <div class="agent-info">Birmingham & Midlands · 9 yrs</div>
+    </div>
+    <div class="agent-card">
+      <img class="agent-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80&auto=format&fit=crop&crop=top" alt="Claire Hastings"/>
+      <div class="agent-name">Claire Hastings</div>
+      <div class="agent-role">New Developments</div>
+      <div class="agent-info">Edinburgh & Scotland · 8 yrs</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-header">
+    <div class="section-tag">
+      <div class="section-tag-line"></div>
+      <div class="section-tag-text">Client stories</div>
+    </div>
+    <h2>What our clients say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="testimonial-text">"PropFlow found us a property that wasn't even on the open market. James understood exactly what we needed — and delivered it in six weeks."</div>
+      <div class="testimonial-author">Robert & Linda Chen</div>
+      <div class="testimonial-location">Purchased in Kensington, London</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="testimonial-text">"Priya negotiated £30,000 off the asking price for our Manchester flat. Calm, sharp, and always in our corner. We wouldn't use anyone else."</div>
+      <div class="testimonial-author">Marcus Okafor</div>
+      <div class="testimonial-location">Purchased in Deansgate, Manchester</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="testimonial-text">"Sold in 11 days, above asking price. The PropFlow team's preparation and market knowledge made the difference. Exceptional from start to finish."</div>
+      <div class="testimonial-author">Sophie & Tom Williams</div>
+      <div class="testimonial-location">Sold in Clifton, Bristol</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="contact">
+  <h2>Ready to find your next property? Let's talk.</h2>
+  <a href="#" class="btn-dark" onclick="toggleChat(); return false;">Chat with an Agent Now</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <div class="nav-logo-mark">P</div>
+        <div class="nav-logo-text">PropFlow <span>Realty</span></div>
+      </div>
+      <p>Premium residential property across the United Kingdom and United States. Trusted by over 4,000 families since 2009.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Properties</h4>
+      <ul>
+        <li><a href="#">For Sale</a></li>
+        <li><a href="#">To Rent</a></li>
+        <li><a href="#">New Builds</a></li>
+        <li><a href="#">Commercial</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">London Office</a></li>
+        <li><a href="#">Manchester Office</a></li>
+        <li><a href="#">hello@propflowrealty.com</a></li>
+        <li><a href="#">+44 20 7946 0800</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 PropFlow Realty Inc. All rights reserved.</p>
+    <p>Privacy Policy · Terms of Use · Cookie Settings</p>
+  </div>
+</footer>
+
+<!-- CHAT WIDGET -->
+<div class="chat-launcher">
+  <div class="chat-bubble-hint" id="chatHint">Talk to our AI agent</div>
+
+  <!-- Channel picker -->
+  <div class="channel-picker" id="channelPicker">
+    <div class="channel-picker-header">Chat with us on</div>
+
+    <!-- Web Chat -->
+    <button class="channel-option" onclick="openWebChat()">
+      <div class="channel-icon web">
+        <svg fill="none" stroke="#0D1B2A" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/>
+        </svg>
+      </div>
+      <div class="channel-label">
+        <div class="channel-label-name">Website Chat</div>
+        <div class="channel-label-sub">Chat here instantly</div>
+      </div>
+      <span class="channel-arrow">›</span>
+    </button>
+
+    <!-- Telegram -->
+    <a class="channel-option" href="https://t.me/propflow_leads_ai_bot" target="_blank" rel="noopener">
+      <div class="channel-icon tg">
+        <svg viewBox="0 0 24 24" fill="white">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.978.942z"/>
+        </svg>
+      </div>
+      <div class="channel-label">
+        <div class="channel-label-name">Telegram</div>
+        <div class="channel-label-sub">Chat on Telegram</div>
+      </div>
+      <span class="channel-badge">LIVE</span>
+    </a>
+
+    <!-- WhatsApp -->
+    <button class="channel-option" onclick="whatsappComingSoon(this)">
+      <div class="channel-icon wa">
+        <svg viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <div class="channel-label">
+        <div class="channel-label-name">WhatsApp</div>
+        <div class="channel-label-sub">Coming soon</div>
+      </div>
+      <span class="channel-badge soon">SOON</span>
+    </button>
+  </div>
+
+  <!-- Main toggle button -->
+  <button class="chat-btn" id="mainChatBtn" onclick="togglePicker()" aria-label="Open chat options">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/>
+    </svg>
+  </button>
+</div>
+
+<!-- Web Chat Window -->
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">P</div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">PropFlow AI Agent</div>
+      <div class="chat-header-status"><span class="status-dot"></span> Online — typically replies instantly</div>
+    </div>
+    <button class="chat-close" onclick="closeWebChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg agent">Hello! Welcome to PropFlow Realty. I'm here to help you find your perfect property. Are you looking to buy or rent?</div>
+  </div>
+  <div class="msg msg-typing" id="typingIndicator">
+    <div class="typing-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="chat-input-area">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Type a message…" onkeydown="handleKey(event)"/>
+    <button class="chat-send" onclick="sendMessage()">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // ── Hint auto-hide ──
+  setTimeout(() => {
+    const hint = document.getElementById('chatHint');
+    if (hint) { hint.style.opacity = '0'; setTimeout(() => { hint.style.display = 'none'; }, 300); }
+  }, 4000);
+
+  // ── Picker toggle ──
+  function togglePicker() {
+    const picker = document.getElementById('channelPicker');
+    const btn    = document.getElementById('mainChatBtn');
+    const isOpen = picker.classList.contains('open');
+    // Close web chat if open
+    document.getElementById('chatWindow').classList.remove('open');
+    picker.classList.toggle('open', !isOpen);
+    btn.classList.toggle('active', !isOpen);
+  }
+
+  function closePicker() {
+    document.getElementById('channelPicker').classList.remove('open');
+    document.getElementById('mainChatBtn').classList.remove('active');
+  }
+
+  // ── Web chat ──
+  function openWebChat() {
+    closePicker();
+    document.getElementById('chatWindow').classList.add('open');
+    setTimeout(() => document.getElementById('chatInput').focus(), 50);
+  }
+
+  function closeWebChat() {
+    document.getElementById('chatWindow').classList.remove('open');
+  }
+
+  // ── WhatsApp coming soon feedback ──
+  function whatsappComingSoon(el) {
+    const sub = el.querySelector('.channel-label-sub');
+    const orig = sub.textContent;
+    sub.textContent = 'Coming soon — stay tuned!';
+    setTimeout(() => { sub.textContent = orig; }, 2000);
+  }
+
+  // ── Close picker when clicking outside ──
+  document.addEventListener('click', (e) => {
+    const launcher = document.querySelector('.chat-launcher');
+    const win      = document.getElementById('chatWindow');
+    if (!launcher.contains(e.target) && !win.contains(e.target)) {
+      closePicker();
+    }
+  });
+
+  // ── CTA banner chat button ──
+  function toggleChat() { togglePicker(); }
+
+  // ── Web chat responses ──
+  function handleKey(e) { if (e.key === 'Enter') sendMessage(); }
+
+  const responses = [
+    "Great! What's your budget range, and which city or area are you focused on?",
+    "Noted. And how many bedrooms are you looking for?",
+    "Perfect. Are you looking for a house or an apartment — and do you have a preferred style, like modern or period?",
+    "Excellent — let me pull up some matching properties for you. In the meantime, would you like to book a viewing with one of our agents this week?"
+  ];
+
+  let responseIndex = 0;
+
+  function sendMessage() {
+    const input    = document.getElementById('chatInput');
+    const text     = input.value.trim();
+    if (!text) return;
+
+    const messages = document.getElementById('chatMessages');
+    const typing   = document.getElementById('typingIndicator');
+
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg user';
+    userMsg.textContent = text;
+    messages.appendChild(userMsg);
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+
+    typing.classList.add('visible');
+    messages.appendChild(typing);
+    messages.scrollTop = messages.scrollHeight;
+
+    setTimeout(() => {
+      typing.classList.remove('visible');
+      const agentMsg = document.createElement('div');
+      agentMsg.className = 'msg agent';
+      agentMsg.textContent = responses[responseIndex % responses.length];
+      responseIndex++;
+      messages.appendChild(agentMsg);
+      messages.scrollTop = messages.scrollHeight;
+    }, 1200 + Math.random() * 600);
+  }
+</script>
+</body>
+</html>
